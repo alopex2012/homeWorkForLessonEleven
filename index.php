@@ -113,7 +113,10 @@
     $newStudent = new Student(); //create an instance of the class
     $newStudent->setName("Muhammad");
     $newStudent->setAge(24);
+    $newStudent->setCourse(6);
     echo ("Name: " . $newStudent->getName() . " " . "Age: " . $newStudent->getAge()); //display $newStudent information
+    echo "<br />";
+    echo "Course: " . $newStudent->getCourse();
     echo "<br />";
     $newStudent->addOneYear();
     echo ("Name: " . $newStudent->getName() . " " . "Age: " . $newStudent->getAge()); //display $newStudent information
