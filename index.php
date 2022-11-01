@@ -23,67 +23,103 @@
 
     require_once __DIR__ . '/vendor/autoload.php';
 
-    use App;
+    use App\User, App\Employee, App\Driver, App\Programmer, App\Student;
 
     echo "<pre>",
     "
-    1.	Реалізуйте клас Arr, схожий на той, що я реалізував вище. На відміну від мого класу, метод add вашого класу параметр повинен приймати масив чисел. 
-    Усі числа з цього масиву повинні додаватися до кінця масиву.
-    2.	Реалізуйте також метод getAvg, який знаходитиме середнє арифметичне чисел.
+    1.	Не підглядаючи в мій код, реалізуйте такі ж класи User, Employee
         ",
     "</pre>";
 
-    $array = [3, 5, 7, 9, 11];
-    $newArr = new Arr(); //create an instance of the class
-    $newArr->add($array);
-    print_r($newArr->getNumbers()); //display array information
+    $newUser = new User(); //create an instance of the class
+    $newUser->setName("Ahmet");
+    $newUser->setAge(28);
+    echo ("Name: " . $newUser->getName() . " " . "Age: " . $newUser->getAge()); //display $newUser information
     echo "<br />";
 
-    echo "Cума чисел масива " . $newArr->getSum() . "<br />";
-    echo "Cереднє арифметичне чисел масива " . $newArr->getAvg() . "<br />";
+    $newEmployee = new Employee(); //create an instance of the class
+    $newEmployee->setName("Abdula");
+    $newEmployee->setAge(54);
+    echo ("Name: " . $newEmployee->getName() . " " . "Age: " . $newEmployee->getAge()); //display $newEmployee information
+    echo "<br />";
 
     echo "<hr />";
 
     echo "<pre>",
     "
-    3.	Зробіть клас City, у якому будуть такі властивості - name, foundation (дата основи), population (населення). Створити об'єкт цього класу.
-    4.	Нехай дана змінна $ props, у якій зберігається масив назв властивостей класу City.
-    Переберіть цей масив циклом foreach і виведіть на екран значення відповідних властивостей.
+    2.	Не підглядаючи в мій код, реалізуйте такий же клас Student, що успадковує від класу User.
     ",
     "</pre>";
 
-    $newCity = new City(); //create an instance of the class
-    $newCity->setName("Kyiv");
-    $newCity->setFoundation(430);
-    $newCity->setPopulation(2900000);
-    echo $newCity->getInfo(); //display information about the object
-    $props = ["name", "foundation", "population"];
-    foreach ($props as $prop) {
-        $item = ucfirst($prop); // capitalize the first letter of the string
-        echo "{$item} " . $newCity->{"get{$item}"}() . "<br />";
+    $newStudent = new Student(); //create an instance of the class
+    $newStudent->setName("Ali");
+    $newStudent->setAge(19);
+    echo ("Name: " . $newStudent->getName() . " " . "Age: " . $newStudent->getAge()); //display $newStudent information
+    echo "<br />";
+
+    echo "<hr />";
+
+    echo "<pre>",
+    "
+    3.	Зробіть клас Programmer, який успадковуватиметься від класу Employee. 
+    Нехай новий клас має властивість langs, в якому зберігається масив мов, якими володіє програміст. 
+    Зробіть також геттер та сеттер для цієї властивості.
+    ",
+    "</pre>";
+
+    $newProgrammer = new Programmer(); //create an instance of the class
+    $newProgrammer->setName("Faizulo");
+    $newProgrammer->setAge(20);
+    $newProgrammer->setLangs(["PHP", "Javascript", "C#"]);
+    echo ("Name: " . $newProgrammer->getName() . " " . "Age: " . $newProgrammer->getAge()); //display $newProgrammer information
+    echo "<br />";
+    echo "Langs: ";
+    foreach ($newProgrammer->getLangs() as $item) {
+        echo "{$item}" . "  ";
     }
 
     echo "<hr />";
 
     echo "<pre>",
     "
-    5.	Скопіюйте мій код класу User та масив $ props. У моєму прикладі на екран виводиться ім'я користувача. Виведіть ще й ім'я та по батькові.
-    6.	Нехай масив $ methods буде асоціативним із ключами method1 і method2:
-        $ methods = ['method1' => 'getName', 'method2' => 'getAge'];
-    Виведіть ім'я та вік користувача за допомогою цього масиву.
+    4.	Зробіть клас Driver (водій), який успадковуватиметься від класу Employee. 
+    Нехай новий клас додає такі властивості: стаж водія, категорія водіння (A, B, C, D), 
+    а також геттери і сеттери до них.
     ",
     "</pre>";
 
-    $newUser = new User("Mike", 37); //create an instance of the class
-    echo $newUser->getInfo();  //display information about the object
-    $methods = ['method1' => 'getName', 'method2' => 'getAge'];
-    echo "Name " . $newUser->{$methods['method1']}() . "<br />";
-    echo "Age " . $newUser->{$methods['method2']}() . "<br />";
+    $newDriver = new Driver(); //create an instance of the class
+    $newDriver->setName("Omar");
+    $newDriver->setAge(31);
+    $newDriver->setExperience(10);
+    $newDriver->setCategory(["B", "C"]);
+    echo ("Name: " . $newDriver->getName() . " " . "Age: " . $newDriver->getAge()); //display $newDriver information
+    echo "<br />";
+    echo "Experience: " . $newDriver->getExperience();
+    echo "<br />";
+    echo "Categories: ";
+    foreach ($newDriver->getCategory() as $item) {
+        echo "{$item}" . "  ";
+    }
+    echo "<hr />";
 
+    echo "<pre>",
+    "
+    5.	Скопіюйте мій код класу User. Самостійно не підглядаючи в мій код реалізуйте
+    описаний клас Student з методами getCourse, setCourse та addOneYear.
+    ",
+    "</pre>";
+
+    $newStudent = new Student(); //create an instance of the class
+    $newStudent->setName("Muhammad");
+    $newStudent->setAge(24);
+    echo ("Name: " . $newStudent->getName() . " " . "Age: " . $newStudent->getAge()); //display $newStudent information
+    echo "<br />";
+    $newStudent->addOneYear();
+    echo ("Name: " . $newStudent->getName() . " " . "Age: " . $newStudent->getAge()); //display $newStudent information
     echo "<hr />";
 
     ?>
-
 
 </body>
 

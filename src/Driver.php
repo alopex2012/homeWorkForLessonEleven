@@ -19,7 +19,9 @@ class Driver extends Employee
 
     public function setCategory($category)
     {
-        $this->category = $category;
+        for ($i = 0; $i < count($category); $i++) {
+            $this->category[] = $category[$i];
+        }
     }
 
     public function getCategory()

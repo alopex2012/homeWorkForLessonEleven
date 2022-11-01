@@ -8,7 +8,9 @@ class Programmer extends Employee
 
     public function setLangs($langs)
     {
-        $this->langs = $langs;
+        for ($i = 0; $i < count($langs); $i++) {
+            $this->langs[] = $langs[$i];
+        }
     }
 
     public function getLangs()
